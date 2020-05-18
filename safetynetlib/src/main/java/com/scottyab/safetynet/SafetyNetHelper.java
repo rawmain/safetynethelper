@@ -5,18 +5,24 @@ import android.text.TextUtils;
 import android.util.Base64;
 import android.util.Log;
 
-import com.google.android.gms.common.api.ApiException;
-import com.google.android.gms.safetynet.SafetyNet;
-import com.google.android.gms.safetynet.SafetyNetApi;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+
+import com.huawei.hmf.tasks.OnFailureListener;
+import com.huawei.hmf.tasks.OnSuccessListener;
+import com.huawei.hms.common.ApiException;
+import com.huawei.hms.support.api.entity.safetydetect.SysIntegrityResp;
+import com.huawei.hms.support.api.safetydetect.SafetyDetect;
 
 import java.security.SecureRandom;
 import java.util.Arrays;
 import java.util.List;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
+// [Modified By HMSConvertor] import com.google.android.gms.common.api.ApiException;
+// [Modified By HMSConvertor] import com.google.android.gms.safetynet.SafetyNet;
+// [Modified By HMSConvertor] import com.google.android.gms.safetynet.SafetyNetApi;
+// [Modified By HMSConvertor] import com.google.android.gms.tasks.OnFailureListener;
+// [Modified By HMSConvertor] import com.google.android.gms.tasks.OnSuccessListener;
 
 /**
  * Simple wrapper to request google Play services - SafetyNet test
@@ -101,11 +107,15 @@ public class SafetyNetHelper {
         requestNonce = generateOneTimeRequestNonce();
         requestTimestamp = System.currentTimeMillis();
 
-        SafetyNet.getClient(context).attest(requestNonce, googleDeviceVerificationApiKey)
-                .addOnSuccessListener(new OnSuccessListener<SafetyNetApi.AttestationResponse>() {
+// [Modified By HMSConvertor]         SafetyNet.getClient(context).attest(requestNonce, googleDeviceVerificationApiKey)
+        SafetyDetect.getClient(context).sysIntegrity(requestNonce, googleDeviceVerificationApiKey)
+// [Modified By HMSConvertor]                 .addOnSuccessListener(new OnSuccessListener<SafetyNetApi.AttestationResponse>() {
+                .addOnSuccessListener(new OnSuccessListener<SysIntegrityResp>() {
                     @Override
-                    public void onSuccess(SafetyNetApi.AttestationResponse attestationResponse) {
-                        final String jwsResult = attestationResponse.getJwsResult();
+// [Modified By HMSConvertor]                     public void onSuccess(SafetyNetApi.AttestationResponse attestationResponse) {
+                    public void onSuccess(SysIntegrityResp attestationResponse) {
+// [Modified By HMSConvertor]                         final String jwsResult = attestationResponse.getJwsResult();
+                        final String jwsResult = attestationResponse.getResult();
 
                         final SafetyNetResponse response = parseJsonWebSignature(jwsResult);
                         lastResponse = response;

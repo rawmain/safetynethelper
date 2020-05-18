@@ -15,8 +15,10 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.google.android.gms.common.ConnectionResult;
-import com.google.android.gms.common.GoogleApiAvailability;
+// [Modified By HMSConvertor] import com.google.android.gms.common.ConnectionResult;
+import com.huawei.hms.api.ConnectionResult;
+// [Modified By HMSConvertor] import com.google.android.gms.common.GoogleApiAvailability;
+import com.huawei.hms.api.HuaweiApiAvailability;
 import com.scottyab.safetynet.SafetyNetHelper;
 import com.scottyab.safetynet.SafetyNetResponse;
 import com.scottyab.safetynet.Utils;
@@ -62,7 +64,8 @@ public class MainActivity extends AppCompatActivity {
 
         initViews();
 
-        if (ConnectionResult.SUCCESS != GoogleApiAvailability.getInstance().isGooglePlayServicesAvailable(this)) {
+// [Modified By HMSConvertor]         if (ConnectionResult.SUCCESS != GoogleApiAvailability.getInstance().isGooglePlayServicesAvailable(this)) {
+        if (ConnectionResult.SUCCESS != HuaweiApiAvailability.getInstance().isHuaweiMobileServicesAvailable(this)) {
             handleError(0, "GooglePlayServices is not available on this device.\n\nThis SafetyNet test will not work");
         }
     }

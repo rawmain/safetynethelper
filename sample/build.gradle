@@ -3,9 +3,15 @@ apply plugin: 'com.android.application'
 android {
     compileSdkVersion 28
     buildToolsVersion "28.0.3"
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
     defaultConfig {
         applicationId 'com.scottyab.safetynet.sample'
-        minSdkVersion 14
+        minSdkVersion 19
         targetSdkVersion 28
         versionCode 7
         versionName "0.7"
@@ -59,8 +65,10 @@ dependencies {
     implementation project(':safetynetlib')
 
     //testing the jitlab dependancy
-    //compile 'com.github.scottyab:safetynethelper:0.1.0@aar'
+    //compile 'com.github.scottyab:safetynethelper:0.3.0@aar'
     
     implementation 'androidx.appcompat:appcompat:1.1.0'
-    implementation 'com.google.android.gms:play-services-base:17.1.0'
+    implementation 'com.huawei.hms:base:4.0.3.301'
 }
+
+apply plugin: 'com.huawei.agconnect'
