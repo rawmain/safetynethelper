@@ -1,0 +1,12 @@
+{
+	"client":{
+		"cp_id":"<YOUR_CP_ID>",
+		"product_id":"<YOUR_PRODUCT_ID>",
+		"client_id":"<YOUR_CLIENT_ID>",
+		"client_secret":"<YOUR_CLIENT_SECRET>",
+		"app_id":"<YOUR_APP_ID>",
+		"package_name":"<YOUR_PACKAGE_NAME>",
+		"api_key":"<YOUR_API_KEY>"
+	},
+	"configuration_version":"1.0"
+}
