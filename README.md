@@ -49,10 +49,10 @@ You'll need to get a **API key** from the Huawei developer console - AGC to allo
 
 The sample app illustrates the helper library in practice. 
 
-<img width="270" src="./art/sample_req_pass_cts_pass.png">
+<img width="800" src="./art/HMS_01.png">
 <br>
-<img width="270" src="./art/sample_req_pass_cts_fail.png">
-<img width="270" src="./art/sample_req_pass_validation_fail.png">
+<img width="800" src="./art/HMS_02.png">
+
 
 
 Forked from **SafetyNET Helper** code by | **Scott Alexander-Bown**
